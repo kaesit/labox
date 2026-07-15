@@ -1,6 +1,10 @@
+import uvicorn
+from dotenv import load_dotenv
 import os 
 import sys
 
+
+load_dotenv()
 
 HOME_DIR = os.path.dirname(os.path.abspath(__file__))
 
