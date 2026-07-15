@@ -2,6 +2,8 @@ import os
 import sys
 
 
+HOME_DIR = os.path.dirname(os.path.abspath(__file__))
+
 class Main():
     def __init__(self, profile:dict):
         self.profile = profile
