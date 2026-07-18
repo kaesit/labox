@@ -1,0 +1,15 @@
+dotenv
+opencv-python
+numpy
+scipy
+pyserial
+pyusb
+fastapi
+uvicorn
+pydantic
+typing-extensions
+pytest
+pytest-asyncio
+hypothesis
+ruff
+mypy
