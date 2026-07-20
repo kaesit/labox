@@ -24,7 +24,7 @@ app.add_middleware(
 @app.get("/")
 async def root():
     return {"message": "LABOX SERVICE is running!"}
-
+# @Incomplete
 @app.get('/device')
 async def getDeviceInfo():
     return {
