@@ -1,6 +1,6 @@
 # Labox — Open Laboratory Automation & Experimentation Framework
 
-![title](Images/labox_image.png)
+![title](labox_image.png)
 ![Python](https://img.shields.io/badge/Python-3.12-3776AB)
 ![OpenCV](https://img.shields.io/badge/OpenCV-Computer%20Vision-5C3EE8)
 ![NumPy](https://img.shields.io/badge/NumPy-Scientific%20Computing-013243)
