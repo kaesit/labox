@@ -11,7 +11,7 @@
 ![STM32](https://img.shields.io/badge/STM32-Hardware%20Integration-03234B)
 ![OS](https://img.shields.io/badge/OS-macOS%20%7C%20Windows%20%7C%20Linux-0078D4)
 ![Status](https://img.shields.io/badge/status-experimental-orange)
-![License](https://img.shields.io/badge/license-MIT-green)
+![License](https://img.shields.io/badge/license-PolyForm%20Noncommercial-blue)
 
 ## What is Labox?
 
@@ -200,3 +200,24 @@ Labox is an exploration of what that could look like.
 ---
 
 ⚠️ **Labox is currently experimental and under active development. It should not be used for clinical diagnosis, medical treatment, safety-critical systems, or validated scientific decision-making.**
+
+## Licensing
+
+Labox is source-available software distributed under the **PolyForm Noncommercial License 1.0.0**.
+
+You may use, study, modify, and distribute Labox for permitted noncommercial purposes, including personal projects, education, research, experimentation, and other uses covered by the license.
+
+**Commercial use requires a separate commercial license.**
+
+Commercial licensing may be required if Labox is:
+
+* used as part of a commercial product or service;
+* integrated into a commercial laboratory, research, or automation system;
+* used to provide a paid hosted or managed service;
+* distributed as part of a commercial software or hardware product; or
+* used by a commercial organization for commercial purposes outside the permissions of the PolyForm Noncommercial License.
+
+For commercial licensing inquiries, please contact the project maintainers.
+
+See [`LICENSE.md`](LICENSE.md) for the complete license terms.
+
