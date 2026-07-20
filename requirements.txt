@@ -18,3 +18,4 @@ pytest-asyncio
 hypothesis
 ruff
 mypy
+psutil

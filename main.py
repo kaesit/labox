@@ -4,7 +4,11 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 import os 
 import sys
+import platform
+import psutil
 
+svmem = psutil.virtual_memory()
+total_ram = round(svmem.total / (1024 ** 3), 2)
 
 load_dotenv()
 HOME_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -21,6 +25,16 @@ app.add_middleware(
 async def root():
     return {"message": "LABOX SERVICE is running!"}
 
+@app.get('/device')
+async def getDeviceInfo():
+    return {
+        "Operating System": platform.system(),
+        "OS Version": platform.version(),
+        "Architecture": platform.machine(),
+        "Total Memory": total_ram,
+    }
+
+
 class Main():
     def __init__(self, profile:dict):
         self.profile = profile
@@ -31,5 +45,4 @@ class Main():
     
 if __name__ == "__main__":
     main = Main({"key":"value"})
-
 
