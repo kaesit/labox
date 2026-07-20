@@ -34,6 +34,38 @@ async def getDeviceInfo():
         "Total Memory": total_ram,
     }
 
+"""
+@Doubt
+@Requirements: Is it enough or are there things that need to be critical for profile structure??? nothing comes mind Sad. Sad.
+@Structure
+How sould be the profile structure??
+role : str : which determines relevancy to field, so it becomes a checkpoint how can we manage to help making user experience better.
+interest : str : This is the field of interest of the user, it helps to navigate the user to right resources to install or use right firmware or software for their project device.
+device_info : dict : will be fetched by getDeviceInfo() function, which will determine the limitations of what can user install or use on their device.
+AI/ML : boolean : Thiss will determine if user may intend to build/use AI/ML based tool/devices or not.
+CLI : boolean : We'll learn about if the user wants a CLI feature or not.
+GUI : boolean : We'll learn about if the user wants a GUI feature or not.
+{
+    "role": "bioinformatician",
+    "interest": "Array Sequencing",
+    "device_info":{},
+    "AI/ML": False,
+    "CLI": True,
+    "GUI": False
+}
+"""
+
+# @Incomplete
+@app.get('/profile')
+async def getProfile():
+    return {
+        "role": "bioinformatician",
+        "interest": "Array Sequencing",
+        "device_info": await getDeviceInfo(),
+        "AI/ML": False,
+        "CLI": True,
+        "GUI": False
+    }
 
 class Main():
     def __init__(self, profile:dict):
