@@ -6,6 +6,7 @@ import os
 import sys
 import platform
 import psutil
+import universal_drivers.port_finder as port_finder
 
 svmem = psutil.virtual_memory()
 total_ram = round(svmem.total / (1024 ** 3), 2)
@@ -32,6 +33,7 @@ async def getDeviceInfo():
         "OS Version": platform.version(),
         "Architecture": platform.machine(),
         "Total Memory": total_ram,
+        "Ports": port_finder.find_ports()
     }
 
 """
@@ -74,6 +76,7 @@ class Main():
 
     def run(self):
         uvicorn.run(app, host="127.0.0.1", port=8000, log_level="info")
+        
     
 if __name__ == "__main__":
     main = Main({"key":"value"})
