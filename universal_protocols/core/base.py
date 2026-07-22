@@ -1,7 +1,6 @@
 import os, sys
 from psutil import virtual_memory
 from dotenv import load_dotenv
-from {}
 
 
 load_dotenv()
@@ -22,4 +21,4 @@ class ProtocolModel():
     def GetProtocolsList(self):
         return self.protocols
     def IsProtocolsLoaded(self):
-        return is_protocols_loaded    
+        return is_protocols_loaded  
