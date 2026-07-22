@@ -3,6 +3,8 @@ import matplotlib.pyplot as plt
 from typing import Dict, Any
 
 class BaseVisualizer(ABC):
+    # @Robustness: Return here to Control This Clas is @Incomplete
+    # @F-Test
     # Base Class for All Visualization in LABOX
     def __init__(self, title: str = "Labox Telemetry", width: float = 10.0, height: float = 6.0):
         self.title = title
