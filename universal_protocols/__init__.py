@@ -6,7 +6,6 @@ from universal_protocols.hardware.serial import SerialController
 from universal_protocols.hardware.camera import CameraStreamer
 
 __all__ = [
-    "__version__",
     "ProtocolModel",
     "DeviceProtocol",
     "USBController",
