@@ -1,20 +1,16 @@
-import os, sys
-from psutil import virtual_memory
-from dotenv import load_dotenv
+from universal_protocols.core.base import ProtocolModel
+from universal_protocols.core.interfaces import DeviceProtocol
 
-load_dotenv()
+from universal_protocols.hardware.usb import USBController, TypeCManager
+from universal_protocols.hardware.serial import SerialController
+from universal_protocols.hardware.camera import CameraStreamer
 
-PROTOCOLS = [protocol for protocol in os.getenv("PROTOCOLS").split(",")]
-MEMORY = virtual_memory
-
-class Protocols():
-    def __init__(self, protocols, memory):
-        self.protocols = PROTOCOLS
-        self.memory = MEMORY
-    # @Incomplete @Important Memory allocation is so important and it must not be forgotten 
-    def VirtualMemoryAllocation(self):
-        pass
-    # This function returns protocols value
-    def GetProtocolsList(self):
-        return self.protocols
-
+__all__ = [
+    "__version__",
+    "ProtocolModel",
+    "DeviceProtocol",
+    "USBController",
+    "TypeCManager",
+    "SerialController",
+    "CameraStreamer",
+]
