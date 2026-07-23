@@ -51,6 +51,7 @@ Simulation: Determines the which simulation test user wants on their device
 Scheduler: Determines if user wants scheduler or not
 DigitalTwin: Determines if user wants scheduler or not
 {
+    "role": "bioinformatician",
     "interest": "Array Sequencing",
     "device_info":{},
     "AI/ML": False,
