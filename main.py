@@ -47,13 +47,18 @@ device_info : dict : will be fetched by getDeviceInfo() function, which will det
 AI/ML : boolean : Thiss will determine if user may intend to build/use AI/ML based tool/devices or not.
 CLI : boolean : We'll learn about if the user wants a CLI feature or not.
 GUI : boolean : We'll learn about if the user wants a GUI feature or not.
+Simulation: Determines the which simulation test user wants on their device
+Scheduler: Determines if user wants scheduler or not
+DigitalTwin: Determines if user wants scheduler or not
 {
-    "role": "bioinformatician",
     "interest": "Array Sequencing",
     "device_info":{},
     "AI/ML": False,
     "CLI": True,
-    "GUI": False
+    "GUI": False,
+    "Simulation": "Toxicity",
+    "Scheduler": True
+    "DigitalTwin": False
 }
 """
 
@@ -66,7 +71,10 @@ async def getProfile():
         "device_info": await getDeviceInfo(),
         "AI/ML": False,
         "CLI": True,
-        "GUI": False
+        "GUI": False,
+        "Simulation": "Toxicity",
+        "Scheduler": True,
+        "DigitalTwin": False
     }
 
 class Main():

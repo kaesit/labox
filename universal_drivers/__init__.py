@@ -17,8 +17,7 @@ from transport.tcp import TCP
 from transport.UDP import UDP
 from transport.USB import USB
 
-__all__ =
-[
+__all__ = [
         "ESP32",
         "Jetson",
         "NXP",
