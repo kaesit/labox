@@ -26,6 +26,9 @@ app.add_middleware(
 async def root():
     return {"message": "LABOX SERVICE is running!"}
 # @Incomplete
+"""
+@Scenario, what if user just wants to calibrate a barometer instead installing labox firmware to their mcu or board etc..., what should be the getDeviceInfo function then??????? 
+"""
 @app.get('/device')
 async def getDeviceInfo():
     return {
@@ -63,7 +66,6 @@ DigitalTwin: Determines if user wants scheduler or not
 }
 """
 
-# @Incomplete
 @app.get('/profile')
 async def getProfile():
     return {
