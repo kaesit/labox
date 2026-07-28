@@ -7,6 +7,8 @@ import sys
 import platform
 import psutil
 import universal_drivers.port_finder as port_finder
+import universal_drivers.mcu*
+import universal_drivers.transport*
 
 svmem = psutil.virtual_memory()
 total_ram = round(svmem.total / (1024 ** 3), 2)
@@ -85,6 +87,8 @@ class Main():
         self.run()
 
     def run(self):
+        print("UVICORN RUNS...")
+        print(getProfile())
         uvicorn.run(app, host="127.0.0.1", port=8000, log_level="info")
         
     

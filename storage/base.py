@@ -60,7 +60,7 @@ class DataCompressModel(ABC):
     @abstractmethod
     def set_compression_size(self, data:Any) -> None:
         ...
-class DataDecompressModel(ABC):
+class DataDecompressionModel(ABC):
     @abstractmethod
     def run(self):
         ...
