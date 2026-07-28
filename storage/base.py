@@ -21,3 +21,21 @@ class BaseStorageModel(ABC):
     @abstractmethod
     def decrypt(self, data: str) -> Any:
         ...
+# @Incomplete
+class StorageOptimizer():
+    def __init__(self):
+        ...
+
+class DataCompressModel():
+    def __init__(self):
+        ...
+
+class BaseWriterModel(ABC):
+    @abstractmethod
+    def encode(self, data: Any) -> str:
+        ...
+    
+    @abstractmethod
+    def get_storage_device_info(self, data: Any) -> dict:
+        ...
+
