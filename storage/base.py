@@ -39,3 +39,33 @@ class BaseWriterModel(ABC):
     def get_storage_device_info(self, data: Any) -> dict:
         ...
 
+class BaseReaderModel(ABC):
+    @abstractmethod
+    def decode(self, data:str) -> Any:
+        ...
+
+    @abstractmethod
+    def show_data_properties(self, data:Any) -> dict:
+        ...
+class DataCompressModel(ABC):
+    
+    @abstractmethod
+    def run(self):
+        ...
+
+    @abstractmethod
+    def get_storage_size(self, data: int):
+        ...
+
+    @abstractmethod
+    def set_compression_size(self, data:Any) -> None:
+        ...
+class DataDecompressModel(ABC):
+    @abstractmethod
+    def run(self):
+        ...
+
+    @abstractmethod
+    def decompression(self, data:Any) -> Any:
+        ...
+
