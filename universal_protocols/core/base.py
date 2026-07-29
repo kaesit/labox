@@ -21,4 +21,13 @@ class ProtocolModel():
     def GetProtocolsList(self):
         return self.protocols
     def IsProtocolsLoaded(self):
-        return is_protocols_loaded  
+        return is_protocols_loaded
+    
+    # @Incomplete
+    # @F-Test
+    # @Scenario: This function will mandate all protocols for all devices and it will be valid for all universal_drivers
+    def MandatorationOfProtocols(self, protocol_list: dict) -> None:
+        protocol_list.mandate()
+        is_protocols_loaded = True
+
+
