@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from typing import Callablem, Any
+from typing import Callable, Any
 from enum import Enum
 
 # @Incomplete
