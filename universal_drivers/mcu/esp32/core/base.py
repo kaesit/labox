@@ -12,7 +12,7 @@ class Status(Enum):
     DISCONNECTED="disconnected"
     RECOGNIZED="recognized"
     NOTRECOGNIZED="notrecognized"
-
+    ERROR="error"
 # @Incomplete
 # This classes should be remodeled by reviewing unique properties of the device
 class ESP32Model(ABC):
