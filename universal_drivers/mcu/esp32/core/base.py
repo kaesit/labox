@@ -15,6 +15,13 @@ class Status(Enum):
     ERROR="error"
 # @Incomplete
 # This classes should be remodeled by reviewing unique properties of the device
+# @Scenario
+"""What if user customized his device before using labox, how can labox read and may save those custimazations for user
+What else can be ESP32s unique attribute or properties that should we focus on this class
+1. Can prioritize about Wi-Fi or Bluetooth connections because its use for this purpose way more than other devices are used for wireless connection
+2. Can add more customizable feature because it can be programmed with python
+3. Can work asynchnorous
+""" 
 class ESP32Model(ABC):
     def __init__(self, device_id: str):
         self.device_id = device_id
