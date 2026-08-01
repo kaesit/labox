@@ -8,6 +8,9 @@ from enum import Enum
 class BaseStateMachine(ABC):
     def __init__(self, state_step: int):
         self.state_step = state_step
+        self._transition_matrix: dict  = {}
+        self._lock = threading.Lock()
+
     
     @abstractmethod
     def EventHandler(self) -> None:
