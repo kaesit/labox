@@ -35,3 +35,24 @@ class BaseStateMachine(ABC):
         # @Incomplete i have no idea if we need a complex dictionary formatted information or nothing for the output this part @Must be revisited.
         """ This function will be an abstracted State function for base state machine class"""
         ...
+
+class BaseWatchDogTimer(ABC):
+    def __init__(self, timeout: int):
+        self.timeout = timeout
+
+    @abstractmethod
+    def start(self):
+        # @Incomplete
+        """ Starts watchdog timer"""
+        pass
+    @abstractmethod
+    def feed(self):
+        # @Incomplete
+        """ Resets watchdog timer"""
+        pass
+    @abstractmethod
+    def stop(self):
+        # @Incomplete
+        """ Stops watchdog timer"""
+        pass
+
