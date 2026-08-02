@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
-from typing import Callable, Any
-from enum import Enum
+from typing import Callable, Any, Dict, Optional
+from enum import IntEnum
 
 
 
@@ -55,4 +55,34 @@ class BaseWatchDogTimer(ABC):
         # @Incomplete
         """ Stops watchdog timer"""
         pass
+
+class ErrorSeverity(IntEnum):
+    INFO = 0
+    WARNING = 1
+    RECOVERABLE = 2
+    CRITICAL = 3
+    FATAL = 4
+
+class BaseErrorHandling(ABC):
+    def __init__(self, error: Exception) -> None:
+        """ This function will be base function for exception handling"""
+        pass
+
+    @abstractmethod
+    def _get_system_time(self):
+        """ This function will get system time"""
+        pass
+    
+    @abstractmethod
+    def report_error(self, msg:str, context: Optional[Dict[str, Any]]) -> None:
+        """ This function will show an error output in dict format"""
+        pass
+    
+    @abstractmethod
+    def get_error_count(self) -> int:
+        return self._error_count
+
+    @absractmethod
+    def get_last_error(self) -> Optional[Dict[str, Any]]:
+        return self._last_error
 
