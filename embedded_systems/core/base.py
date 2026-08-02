@@ -86,6 +86,9 @@ class BaseErrorHandling(ABC):
     def get_last_error(self) -> Optional[Dict[str, Any]]:
         return self._last_error
 
+# @Incomplete
+# @Robustness
+# This is not complete and @Must be revisited, flaws are so much: there are no itemSize structure, no buffer_destroy function
 class RingBuffer():
     
     def __init__(self, head:int, tail: int, buffer_capacity:int, data: bytearray = None):
