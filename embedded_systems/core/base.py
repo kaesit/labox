@@ -86,3 +86,32 @@ class BaseErrorHandling(ABC):
     def get_last_error(self) -> Optional[Dict[str, Any]]:
         return self._last_error
 
+class RingBuffer():
+    
+    def __init__(self, head:int, tail: int, buffer_capacity:int, data: bytearray = None):
+        self.head = head
+        self.tail = tail
+        self.buffer_capacity = buffer_capacity
+        self.data = data
+
+    
+    def push(self):
+        """ This is the data add function of Ring Buffer class"""
+        pass
+    
+    def pop(self):
+        """ This is the data add function of Ring Buffer class"""
+        pass
+    
+    def is_buffer_empty(self) -> bool:
+        """ This function will check if the ring buffer is empty or not"""
+        pass
+    
+    def is_buffer_full(self) -> bool:
+        """ This function will check if the ring buffer is full or not"""
+        pass
+    
+    def get_free_space_of_buffer(self) -> int:
+        """ This function will return empty space in ring buffer"""
+        pass
+
