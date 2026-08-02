@@ -95,7 +95,11 @@ class RingBuffer():
         self.head = head
         self.tail = tail
         self.buffer_capacity = buffer_capacity
-        self.data = data
+        
+        if data is None:
+            self.data = bytearray(buffer_capacity)
+        else:
+            self.data = data
 
     
     def push(self):
