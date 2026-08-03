@@ -122,3 +122,15 @@ class RingBuffer():
         """ This function will return empty space in ring buffer"""
         pass
 
+class BaseHardwareInterface(ABC):
+    # @Incomplete
+    # @Scenario: This will be an abstract Interface for communicating between embedded devices.
+    """ 
+    Context: 
+    Must be thread safe like every other thing on this system other wise must be revisited
+    This is a interface structure so it must abstracted so well that no other problem occur in any test case             
+    """
+    # @F-Test: there are no test cases for this class
+    def __init__(self):
+        pass
+
