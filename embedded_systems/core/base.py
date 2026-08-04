@@ -134,3 +134,9 @@ class BaseHardwareInterface(ABC):
     def __init__(self):
         pass
 
+class BaseCommandDispatcher(ABC):
+    def __init__(self):
+        pass
+class BasePayloadParser(ABC):
+    def __init__(self):
+        pass
