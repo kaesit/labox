@@ -135,7 +135,20 @@ class BaseHardwareInterface(ABC):
         pass
 
 class BaseCommandDispatcher(ABC):
-    def __init__(self):
+    def __init__(self) -> None:
+        pass
+    
+    @abstractmethod
+    def Dispatch(self, command_name:str, *args: Any, **kwargs: Any) -> Any:
+        """ Executes the handler matched with the command name"""
+        pass
+    @abstractmethod
+    def Register(self, command_name:str, handler:Callable[..., Any]) -> None:
+        """ Registers a handler function to a command name"""
+        pass
+    @abstractmethod
+    def _unknown_command(self, command_name:str) -> None:
+        """ Fallback behavior when no command is found"""
         pass
 class BasePayloadParser(ABC):
     def __init__(self):
