@@ -13,7 +13,7 @@ class BarChartVisualizer(BaseVisualizer):
         # @Incomplete
         # @Scenario {'Nucleo_Basinc': 102.4, 'Valve_Flow'}
         categories=list(data.keys())
-        values=list(data.keys())
+        values=list(data.values())
 
         # Draw bar graph (diverge from others with white corners)
 
