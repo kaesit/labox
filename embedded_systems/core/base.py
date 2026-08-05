@@ -153,3 +153,13 @@ class BaseCommandDispatcher(ABC):
 class BasePayloadParser(ABC):
     def __init__(self):
         pass
+
+    @abstractmethod
+    def validate(self) -> bool:
+        """ Validate the raw payload structure and contents"""
+        pass
+    
+    @abstractmethod
+    def parse(self) -> Dict[str, Any]:
+        """ Parse the raw payload and return a structured dictionary """
+        pass
