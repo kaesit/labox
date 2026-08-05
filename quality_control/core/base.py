@@ -2,6 +2,9 @@ from abc import ABC, abstractmethod
 from typing import Dict, Callable, Any, Optional
 from enum import Enum
 
+
+# @Incomplete
+# This file and structures not completed, it @Must be revisited and this class is not urge to finish
 class Status(Enum):
         CONTROLING = "controling"
         CHECKING = "checking"
