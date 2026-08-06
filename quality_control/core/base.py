@@ -15,12 +15,13 @@ class Status(Enum):
         REJECTED = "rejected"
 
 class BaseQualityModel(ABC):
-    def __init__(self) -> None:
-        pass
+    def __init__(self, ) -> None:
+        self. 
 
 class QualityTask:
-    def __init__(self, task) -> Dict[str, Any]:
-        self.task = taks
+    def __init__(self, task, status:Status) -> Dict[str, Any]:
+        self.task = task
+        self.status = status
 
     @property
     def task(self) -> str:
@@ -29,4 +30,19 @@ class QualityTask:
     def task(self, data:Dict[str, Any]):
         self._task = data
 
+    @task.deleter
+    def task(self) -> None:
+        del _task
+        print("Task is deleted")
+
+    @property
+    def status(self) -> int:
+        return _status
+    @status.setter
+    def status(self, data:Status) -> None:
+        self._status = data
+    @status.deleter
+    def status(self) -> None:
+        del _status
+        print("Deleted status")
 
