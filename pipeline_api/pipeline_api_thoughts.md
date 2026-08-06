@@ -12,7 +12,7 @@ Secondly i want to turn experiment engine a direct module than an abstracted mod
 
 Workflow module is going to be abstracted because people might change it in a way they desire or work in local
 
-## Pipeline
+## Pipeline Visual
 
 <pre>
 <span style="color: #00D2FF; font-weight: bold;">+---------------------------+</span>
@@ -33,4 +33,9 @@ Workflow module is going to be abstracted because people might change it in a wa
 <span style="color: #FF9F00; font-weight: bold;">| (Upload to Machine)       |</span>
 <span style="color: #FF9F00; font-weight: bold;">+---------------------------+</span>
 </pre>
+
+## Architecture
+
+I will use C++ for embedded systems module instead python to optimize better, i build structures with python but end product will run with C++
+It will not has that much of classes for a embedded system module, i will use modular programming instead writing 150 classes
 
