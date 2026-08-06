@@ -15,9 +15,18 @@ class Status(Enum):
         REJECTED = "rejected"
 
 class BaseQualityModel(ABC):
-    def __init__(self, ) -> None:
-        self. 
+    def __init__(self, task: QualityTask, handler: Any) -> None:
+        self.task = task
+        self.handler = handler
 
+    @abstractmethod
+    def run (self) -> Dict[..., Any]:
+        """ This functions runs the whole process"""
+        pass
+    
+    def cancel(self) -> None:
+        self._status = Status.CANCELLED
+        
 class QualityTask:
     def __init__(self, task, status:Status) -> Dict[str, Any]:
         self.task = task
