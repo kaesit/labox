@@ -38,4 +38,4 @@ Workflow module is going to be abstracted because people might change it in a wa
 
 I will use C++ for embedded systems module instead python to optimize better, i build structures with python but end product will run with C++
 It will not has that much of classes for a embedded system module, i will use modular programming instead writing 150 classes
-
+but C++ has that unique dependency problems that's this project aims to solve, i might use Rust because it Rust has a package manager named cargo and it looks like the 'pip' in python, and if it's that comfortable i will use rust, because i hate the myth of great engineers use C/C++ i don't wanna struggle with  memory leaks i want my application/platform to be a comfort zone for other developers and engineers or people who interested in medical device building not a developer hell that they have to customize every fucking dependency hundred times over instead using platform just like that to build thing they want to build.
