@@ -12,3 +12,25 @@ Secondly i want to turn experiment engine a direct module than an abstracted mod
 
 Workflow module is going to be abstracted because people might change it in a way they desire or work in local
 
+## Pipeline
+
+<pre>
+<span style="color: #00D2FF; font-weight: bold;">+---------------------------+</span>
+<span style="color: #00D2FF; font-weight: bold;">| Step 1: Thread-Safe Pipe  |</span> 
+<span style="color: #00D2FF; font-weight: bold;">| (Core Ingestion)          |</span> --------+
+<span style="color: #00D2FF; font-weight: bold;">+---------------------------+</span>         |
+                                      |
+                                      v
+<span style="color: #00D2FF; font-weight: bold;">+---------------------------+</span>     <span style="color: #39FF14; font-weight: bold;">+---------------------------+</span>
+<span style="color: #00D2FF; font-weight: bold;">| Step 3: Simulation        |</span>     <span style="color: #39FF14; font-weight: bold;">| Step 2: Quality Control   |</span>
+<span style="color: #00D2FF; font-weight: bold;">| (Run with Test Cases)     |</span> <---<span style= "color:#39FF14">| (Local Code & Design Chk) |</span>
+<span style="color: #00D2FF; font-weight: bold;">+---------------------------+</span>     <span style="color: #39FF14; font-weight: bold;">+---------------------------+</span>
+    |
+    | (All checks passed)
+    v
+<span style="color: #FF9F00; font-weight: bold;">+---------------------------+</span>
+<span style="color: #FF9F00; font-weight: bold;">| Step 4: Secure Deployment |</span>
+<span style="color: #FF9F00; font-weight: bold;">| (Upload to Machine)       |</span>
+<span style="color: #FF9F00; font-weight: bold;">+---------------------------+</span>
+</pre>
+
