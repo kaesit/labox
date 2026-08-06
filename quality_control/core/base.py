@@ -19,7 +19,14 @@ class BaseQualityModel(ABC):
         pass
 
 class QualityTask:
-    def __init__(self) -> Dict[str, Any]:
-        pass
+    def __init__(self, task) -> Dict[str, Any]:
+        self.task = taks
+
+    @property
+    def task(self) -> str:
+        return _task
+    @task.setter
+    def task(self, data:Dict[str, Any]):
+        self._task = data
 
 
