@@ -19,3 +19,9 @@ class QualityTestPipeline():
     def cancel(self) -> None:
         self.quality_test.cancel()
 
+class SimulationTestPipeline():
+    def __init__(self):
+        # @Incomplete because i hadn't write any sentence for simulation module so this part will wait until i decide what will be the boundaries of simulation module
+        pass
+
+
