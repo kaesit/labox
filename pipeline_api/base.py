@@ -9,7 +9,12 @@ class QualityTestPipeline():
         run(quality_test)
 
     def run (self, quality_test: BaseQualityModel, *args, **kwargs):
-        
+        print("Quality Tests has began")
+        try:
+            quality_test.run()
+        except (ImportError, ArithmeticError, MemoryError, AssertionError, ValueError) as error_details:
+            print(f"There are errors, error details: {error_details}")
+            
 
     def cancel(self) -> None:
         BaseQualityModel.cancel()
