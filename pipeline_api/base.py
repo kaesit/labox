@@ -14,8 +14,8 @@ class QualityTestPipeline():
             quality_test.run()
         except (ImportError, ArithmeticError, MemoryError, AssertionError, ValueError) as error_details:
             print(f"There are errors, error details: {error_details}")
-            
+            self.cancel()            
 
     def cancel(self) -> None:
-        BaseQualityModel.cancel()
+        self.quality_test.cancel()
 
