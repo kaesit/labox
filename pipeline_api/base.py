@@ -1,6 +1,6 @@
 from typing import Dict, Any, Callable, Optional
 from quality_control.core.base import BaseQualityModel, QualityTask, Status
-
+import asyncio
 
 class QualityTestPipeline():
     
@@ -24,4 +24,19 @@ class SimulationTestPipeline():
         # @Incomplete because i hadn't write any sentence for simulation module so this part will wait until i decide what will be the boundaries of simulation module
         pass
 
+class FirmwareloaderPipeline():
+    
+    def __init__(self) -> None:
+        pass
+
+    def circuit_checker(self, circuit_details):
+        """ This function will check circuit details, 
+            Context: Circuit details are not just connections of sensors, also going to check protocols, driver dependencies
+            and other electrical parameterts to be sure that device won't be damaged or empty after process
+        """
+        pass
+
+    def loader(self, event_details: Dict[str, Any]):
+        """ This function will upload firmware to selected devices"""
+        pass
 
