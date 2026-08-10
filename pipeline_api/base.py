@@ -3,7 +3,6 @@ from quality_control.core.base import BaseQualityModel, QualityTask, Status
 import asyncio
 
 class QualityTestPipeline():
-    
     def __init__(self, quality_test:BaseQualityModel) -> None:
         self.quality_test = quality_test
         run(quality_test)
@@ -14,7 +13,7 @@ class QualityTestPipeline():
             quality_test.run()
         except (ImportError, ArithmeticError, MemoryError, AssertionError, ValueError) as error_details:
             print(f"There are errors, error details: {error_details}")
-            self.cancel()            
+            self.cancel()
 
     def cancel(self) -> None:
         self.quality_test.cancel()
@@ -26,12 +25,11 @@ class SimulationTestPipeline():
 
 # @Incomplete This class will install firmware to devices but i need to add more layers and Rust bindings to be sure how correctly install firmware to a custom designed device that is buid by user
 class FirmwareloaderPipeline():
-    
     def __init__(self) -> None:
         pass
 
     def circuit_checker(self, circuit_details):
-        """ This function will check circuit details, 
+        """ This function will check circuit details,
             Context: Circuit details are not just connections of sensors, also going to check protocols, driver dependencies
             and other electrical parameterts to be sure that device won't be damaged or empty after process
         """
