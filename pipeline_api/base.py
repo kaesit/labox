@@ -24,6 +24,7 @@ class SimulationTestPipeline():
         # @Incomplete because i hadn't write any sentence for simulation module so this part will wait until i decide what will be the boundaries of simulation module
         pass
 
+# @Incomplete This class will install firmware to devices but i need to add more layers and Rust bindings to be sure how correctly install firmware to a custom designed device that is buid by user
 class FirmwareloaderPipeline():
     
     def __init__(self) -> None:
