@@ -24,7 +24,7 @@ class RingBuffer {
 
 	public:
 		explicit RingBuffer(uint16_t size) : capacity(size), head(0), tail (0) {
-			if (size == 0 || size < 0) throw std::invalid_argument("Capacity must be > 0");
+			if (size == 0) throw std::invalid_argument("Capacity must be > 0");
 			buffer = std::make_unique<T[]>(capacity);
 		}
 
@@ -37,7 +37,7 @@ class RingBuffer {
 			}
 
 			buffer[current_head] = item;
-			head.store(next_head, std::memory_order_relase);
+			head.store(next_head, std::memory_order_release);
 			return true;
 		}
 		
@@ -48,7 +48,7 @@ class RingBuffer {
 				return false; // Buffer is empty
 			}
 			item = buffer[current_tail];
-			tail.store((current_tail + 1) % capacity, std::memory_order_relase);
+			tail.store((current_tail + 1) % capacity, std::memory_order_release);
 			return true;
 		}
 
