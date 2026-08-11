@@ -10,8 +10,7 @@ from udp.core.base import UDPModel
 from usb.core.base import USBModel
 
 
-__all__ =
-[
+__all__ = [
         "BleModel",
         "CanModel",
         "EthernetModel",

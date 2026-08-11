@@ -7,8 +7,7 @@ import sys
 import platform
 import psutil
 import universal_drivers.port_finder as port_finder
-import universal_drivers.mcu*
-import universal_drivers.transport*
+from universal_drivers.mcu.esp32.core.base import *
 
 svmem = psutil.virtual_memory()
 total_ram = round(svmem.total / (1024 ** 3), 2)
