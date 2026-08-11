@@ -13,6 +13,10 @@ svmem = psutil.virtual_memory()
 total_ram = round(svmem.total / (1024 ** 3), 2)
 
 load_dotenv()
+
+NAME = os.getenv("NAME")
+PASSWORD = os.getenv("PASSWORD")
+
 HOME_DIR = os.path.dirname(os.path.abspath(__file__))
 app = FastAPI(title="LABOX SERVICE", description="LABOX SERVICE", version="0.0.1")
 
@@ -91,5 +95,5 @@ class Main():
         
     
 if __name__ == "__main__":
-    main = Main({"key":"value"})
+    main = Main({NAME:PASSWORD})
 
