@@ -1,6 +1,6 @@
 import os, sys
 from typing import Dict, Any
-
+from enum import Enum
 
 
 # @Incomplete i don't really know how to implement environmental situations into a simulation model
@@ -16,7 +16,8 @@ environmental details:
 }
 """
 class EnvironmentalSimulationModel():
-    def __init__(self, environmental_details: Dict[str, Any]):
+    def __init__(self, simulation_title:str = "Environmental Simulation",  environmental_details: Dict[str, Any]):
+        self.simulation_title = simulation_title
         self.environment_details = self.environmental_details
         print(self.environmental_details)
         self.is_running = False
@@ -29,4 +30,32 @@ class EnvironmentalSimulationModel():
         Firstly gonna use the main simulation model from core and runs through it test for spesific environments and then outputs a result that how well it performed
         """
         self.is_running = True
-    def cancel ()
+        print(f"Starting {simulation_title}")
+    def cancel ():
+        self.is_running = False
+        print(f"Cancelling {simulation_title}")
+
+class SensorType(Enum):
+    BAROMETER = 1
+    SUPER_SONIC = 2
+    LIDAR = 3
+    GYRO = 4
+    GPS = 5
+    HEAT = 6
+
+
+class SensorSimulationModel():
+
+    def __init__(self, simulation_title:str = "Sensor Simulation", sensor_type: SensorType = SensorType.BAROMETER):
+        self.simulation_title = simulation_title
+        self.sensor_type = sensor_type
+        self.results = {}
+        self.is_running = False
+
+    def run (self) -> Dict[str, Any]:
+        self.is_running = True
+        print(f"Starting {self.simulation_title}")
+    
+    def cancel(self) -> None:
+        self.is_running = False
+        print(f"Cancelling {simulation_title}")
