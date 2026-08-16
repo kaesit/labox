@@ -26,14 +26,34 @@ class SimulationTestPipeline():
 # @Incomplete This class will install firmware to devices but i need to add more layers and Rust bindings to be sure how correctly install firmware to a custom designed device that is buid by user
 class FirmwareloaderPipeline():
     def __init__(self) -> None:
-        pass
+        """ Context: 
+        @Incomplete
+        @Scenario : some of the circuit checker libraries should use or derive to take advantage of it, otherwise that heavy libraries will just make our 'optimization-driven' platform 
+        slower and slower.
+        Additionally: all this __init__ function actually just gets the parameters and runs the loader
+        """
+        self.is_load_safe = False
 
+        if self.is_load_safe :
+            self.load()
+        else:
+            self.circuit_checker
+
+    def simulate(self, circuit_details) -> bool:
+        """
+        This function will use circuit simulators to return a boolean value
+        """
+        pass
     def circuit_checker(self, circuit_details):
         """ This function will check circuit details,
             Context: Circuit details are not just connections of sensors, also going to check protocols, driver dependencies
             and other electrical parameterts to be sure that device won't be damaged or empty after process
         """
-        pass
+        # is_circuit_ok = simulate(circuit_details) This function will run the simulation and return a boolean value for controls  
+        if is_circuit_ok:
+            self.is_load_safe = True
+        else:
+            False
 
     def loader(self, event_details: Dict[str, Any]):
         """ This function will upload firmware to selected devices"""
