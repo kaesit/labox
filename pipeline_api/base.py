@@ -19,9 +19,19 @@ class QualityTestPipeline():
         self.quality_test.cancel()
 
 class SimulationTestPipeline():
-    def __init__(self):
+    def __init__(self, simulation_title:str = "Pipeline Simulation", simulation_details: Dict[str, Any]):
         # @Incomplete because i hadn't write any sentence for simulation module so this part will wait until i decide what will be the boundaries of simulation module
-        pass
+        self.simulation_title = simulation_title
+        self.simulation_details = simulation_details
+        self.is_running = False
+    
+    def run (self):
+        self.is_running = True
+        print(f"Simulation {self.simulation_title} is running")
+    
+    def cancel(self):
+        self.is_running = False
+        print(f"Simulation {self.simulation_title} is canceled")
 
 # @Incomplete This class will install firmware to devices but i need to add more layers and Rust bindings to be sure how correctly install firmware to a custom designed device that is buid by user
 class FirmwareloaderPipeline():
