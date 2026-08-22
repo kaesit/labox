@@ -3,16 +3,23 @@ from typing import Dict, Any
 from enum import Enum
 
 
+GRAVITY = 9.81 # m/sˆ2
+VOLT = 3.3 # Volt
+RESISTANCE = 5000 # OHM
+ADC = 20 # 20 bit
+
+
+
 # @Incomplete i don't really know how to implement environmental situations into a simulation model
 # but the context of this class will contain those specific parameters that help us to make simulation multi environmental
-""" 
+"""
 @Scenario
 environmental details:
 {
     environment: sterilized lab,
     dust_ratio : %2
     wind : 0(km)
-    
+
 }
 """
 class EnvironmentalSimulationModel():
@@ -21,7 +28,7 @@ class EnvironmentalSimulationModel():
         self.environment_details = self.environmental_details
         print(self.environmental_details)
         self.is_running = False
-    
+
     def run(self) -> Dict[str, Any]:
         """
         @Incomplete
@@ -35,6 +42,8 @@ class EnvironmentalSimulationModel():
         self.is_running = False
         print(f"Cancelling {simulation_title}")
 
+
+
 class SensorType(Enum):
     BAROMETER = 1
     SUPER_SONIC = 2
@@ -44,6 +53,12 @@ class SensorType(Enum):
     HEAT = 6
 
 
+
+"""
+Barometer formula: h = p / (x * g)
+
+
+"""
 class SensorSimulationModel():
 
     def __init__(self, simulation_title:str = "Sensor Simulation", sensor_type: SensorType = SensorType.BAROMETER):
@@ -55,7 +70,7 @@ class SensorSimulationModel():
     def run (self) -> Dict[str, Any]:
         self.is_running = True
         print(f"Starting {self.simulation_title}")
-    
+
     def cancel(self) -> None:
         self.is_running = False
         print(f"Cancelling {simulation_title}")
