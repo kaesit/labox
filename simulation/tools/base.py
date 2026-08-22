@@ -71,6 +71,17 @@ class SensorSimulationModel():
         self.is_running = True
         print(f"Starting {self.simulation_title}")
 
+        self.results = None
+
+        """
+        results = {Status: True/False, SensorType: self.sensor_type, ADCPerformance: 0.8,
+        CircuitPerformance: 0.6, SensorGoalPerformance: 0.7, TotalPoint: 0.72}
+        @Incomplete
+        @Scenario: This result structure must be detalied
+        """
+
+        return self.results
+
     def cancel(self) -> None:
         self.is_running = False
         print(f"Cancelling {simulation_title}")
