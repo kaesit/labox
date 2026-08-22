@@ -64,7 +64,6 @@ class SensorSimulationModel():
     def __init__(self, simulation_title:str = "Sensor Simulation", sensor_type: SensorType = SensorType.BAROMETER):
         self.simulation_title = simulation_title
         self.sensor_type = sensor_type
-        self.results = {}
         self.is_running = False
 
     def run (self) -> Dict[str, Any]:
