@@ -41,7 +41,7 @@ class RingBuffer {
 			head.store(next_head, std::memory_order_release);
 			return true;
 		}
-		
+
 		bool pop(T& item) {
 			uint16_t current_tail = tail.load(std::memory_order_relaxed);
 
@@ -53,7 +53,7 @@ class RingBuffer {
 			return true;
 		}
 
-		uint16_t avaible() const {
+		uint16_t available() const {
 			uint16_t h = head.load(std::memory_order_acquire);
 			uint16_t t = tail.load(std::memory_order_acquire);
 			if (h >= t) return h - t;
@@ -68,7 +68,7 @@ class RingBuffer {
 struct SensorPayload {
 	uint8_t sensor_id; // 1 byte Max, 255 sensor
 	uint8_t status_flags; // 1 byte bitmask (e.g. 0x01 Error, 0x02 Calibration)
-	uint16_t value; // 2 byte 
+	uint16_t value; // 2 byte
 	uint8_t crc; // 1 byte checksum
 };
 #pragma pack(pop)
@@ -97,21 +97,22 @@ class Payloadparser {
 						current_state = State::READ_DATA;
 					}
 					break;
-			}
 
-			case State::READ_DATA:
-				raw_data[byte_index++] = b;
-				if (byte_index == sizeof(SensorPayload)){
-					current_state = State.WAIT_HEADER;
 
-					// CRC Validation
-					if (calculate_crc(raw_data, 4) == raw_data[4]) {
-						// Transfer bit level data via  memory copying
-						std::memcpy(&out_payload, raw_data, sizeof(SensorPayload));
-						return true;
-					}
-				}
-				break;
+			  case State::READ_DATA:
+				  raw_data[byte_index++] = b;
+				  if (byte_index == sizeof(SensorPayload)){
+					  current_state = State::WAIT_HEADER;
+
+					  // CRC Validation
+					  if (calculate_crc(raw_data, 4) == raw_data[4]) {
+						  // Transfer bit level data via  memory copying
+						  std::memcpy(&out_payload, raw_data, sizeof(SensorPayload));
+						  return true;
+					  }
+				  }
+				  break;
+      }
+      return false;
 		}
-		return false;
 };
