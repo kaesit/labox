@@ -52,11 +52,11 @@ SensorPayload Structure
 def encoder_to_payload(sensor_id:int, status_flags:int, raw_value:int) -> bytes:
     scaled_value = int(raw_value * 32767)
 
-    payload_core = struct.pack("<BBh", sensor_id, status_flag, scaled_value)
+    payload_core = struct.pack("<BBh", sensor_id, status_flags, scaled_value)
 
     crc_byte = calculate_crc8(payload_core)
 
-    return struct.pack("<BBhB", sensor_id, status_flag, scaled_value, crc_byte)
+    return struct.pack("<BBhB", sensor_id, status_flags, scaled_value, crc_byte)
 
 
 
@@ -66,8 +66,20 @@ def run_simulation():
 
     print("Simulation is Running")
 
-    """
-    THERE IS NO IMPLEMENTATION FOR C++ BINDINGS YET
-    """
+    sensor_buffer = labox_embedded_core.ByteRingBuffer(1024)
 
+    for step, raw_value in enumerate(signal_array):
+
+        payload = encoder_to_payload(sensor_id=1, status_flags=0, raw_value=raw_value)
+
+        for byte_val in payload:
+            sensor_buffer.push(byte_val)
+
+    if step % 100 == 0:
+        print(f"Step: {step:04d} | Signal: {raw_value:+.2f} | Buffer Load: {sensor_buffer.available()} bytes")
+
+    time.sleep(delay_seconds)
+
+if __name__ == "__main__":
+    run_simulation()
 
