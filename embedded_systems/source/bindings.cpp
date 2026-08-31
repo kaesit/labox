@@ -14,6 +14,16 @@ PYBIND11_MODULE(labox_embedded_core, m) {
     py::class_<RingBuffer<uint8_t>>(m, "ByteRingBuffer")
         .def(py::init<uint16_t>())
         .def("available", &RingBuffer<uint8_t>::available)
+
+        .def("push", &RingBuffer<uint8_t>::push)
+
+        .def("pop", [](RingBuffer<uint8_t>& rb) -> py::object {
+            uint8_t val;
+            if (rb.pop(val)) {
+                return py::cast(val);
+            }
+            return py::none();
+        })
         // Python bytearray'den besleme metodu eklenebilir
         ;
 }
