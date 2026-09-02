@@ -2,6 +2,7 @@ from typing import Dict, Any, Callable, Optional
 import asyncio
 import os
 import sys
+import struct
 
 sys.path.append("..")
 from quality_control.core.base import BaseQualityModel, QualityTask, Status
@@ -14,6 +15,22 @@ if embedded_systems_path not in sys.path:
 import labox_embedded_core
 
 print("ALL MODULES SUCCESSFULLY IMPORTED")
+
+run_simulation()
+
+
+def decoder_to_consumer(raw_5_bytes:bytes) -> Dict[str, Any]:
+    unpacked_data = struct.unpack("<BBhB", raw_5_bytes)
+    sensor_id = unpacked_data[0]
+    status_flags = unpacked_data[1]
+    raw_value = unpacked_data[2]
+    crc_byte = unpacked_data[3]
+    return {
+            "sensor_id": sensor_id
+            "status_flags": status_flags
+            "raw_value": raw_value
+            "crc_byte": crc_byte
+    }
 
 
 class QualityTestPipeline():
