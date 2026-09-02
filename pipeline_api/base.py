@@ -5,12 +5,15 @@ import sys
 
 sys.path.append("..")
 from quality_control.core.base import BaseQualityModel, QualityTask, Status
+from simulation.tools.sin_wave import *
 current_dir = os.path.dirname(os.path.abspath(__file__))
 
 embedded_systems_path = os.path.abspath(os.path.join(current_dir, "..", "embedded_systems"))
 if embedded_systems_path not in sys.path:
     sys.path.append(embedded_systems_path)
 import labox_embedded_core
+
+print("ALL MODULES SUCCESSFULLY IMPORTED")
 
 
 class QualityTestPipeline():

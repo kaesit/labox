@@ -23,7 +23,7 @@ environmental details:
 }
 """
 class EnvironmentalSimulationModel():
-    def __init__(self, simulation_title:str = "Environmental Simulation",  environmental_details: Dict[str, Any]):
+    def __init__(self, simulation_title:str = "Environmental Simulation",  environmental_details: Dict[str, Any] = None):
         self.simulation_title = simulation_title
         self.environment_details = self.environmental_details
         print(self.environmental_details)
