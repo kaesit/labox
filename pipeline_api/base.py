@@ -1,6 +1,17 @@
 from typing import Dict, Any, Callable, Optional
-from quality_control.core.base import BaseQualityModel, QualityTask, Status
 import asyncio
+import os
+import sys
+
+sys.path.append("..")
+from quality_control.core.base import BaseQualityModel, QualityTask, Status
+current_dir = os.path.dirname(os.path.abspath(__file__))
+
+embedded_systems_path = os.path.abspath(os.path.join(current_dir, "..", "embedded_systems"))
+if embedded_systems_path not in sys.path:
+    sys.path.append(embedded_systems_path)
+import labox_embedded_core
+
 
 class QualityTestPipeline():
     def __init__(self, quality_test:BaseQualityModel) -> None:
@@ -19,16 +30,16 @@ class QualityTestPipeline():
         self.quality_test.cancel()
 
 class SimulationTestPipeline():
-    def __init__(self, simulation_title:str = "Pipeline Simulation", simulation_details: Dict[str, Any]):
+    def __init__(self, simulation_title:str = "Pipeline Simulation", simulation_details: Dict[str, Any] = None):
         # @Incomplete because i hadn't write any sentence for simulation module so this part will wait until i decide what will be the boundaries of simulation module
         self.simulation_title = simulation_title
         self.simulation_details = simulation_details
         self.is_running = False
-    
+
     def run (self):
         self.is_running = True
         print(f"Simulation {self.simulation_title} is running")
-    
+
     def cancel(self):
         self.is_running = False
         print(f"Simulation {self.simulation_title} is canceled")
@@ -36,9 +47,9 @@ class SimulationTestPipeline():
 # @Incomplete This class will install firmware to devices but i need to add more layers and Rust bindings to be sure how correctly install firmware to a custom designed device that is buid by user
 class FirmwareloaderPipeline():
     def __init__(self) -> None:
-        """ Context: 
+        """ Context:
         @Incomplete
-        @Scenario : some of the circuit checker libraries should use or derive to take advantage of it, otherwise that heavy libraries will just make our 'optimization-driven' platform 
+        @Scenario : some of the circuit checker libraries should use or derive to take advantage of it, otherwise that heavy libraries will just make our 'optimization-driven' platform
         slower and slower.
         Additionally: all this __init__ function actually just gets the parameters and runs the loader
         """
@@ -59,7 +70,7 @@ class FirmwareloaderPipeline():
             Context: Circuit details are not just connections of sensors, also going to check protocols, driver dependencies
             and other electrical parameterts to be sure that device won't be damaged or empty after process
         """
-        # is_circuit_ok = simulate(circuit_details) This function will run the simulation and return a boolean value for controls  
+        # is_circuit_ok = simulate(circuit_details) This function will run the simulation and return a boolean value for controls
         if is_circuit_ok:
             self.is_load_safe = True
         else:

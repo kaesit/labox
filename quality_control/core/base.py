@@ -14,23 +14,6 @@ class Status(Enum):
         ACCEPTED = "accepted"
         REJECTED = "rejected"
 
-class BaseQualityModel(ABC):
-    def __init__(self, task: QualityTask, handler: Any) -> None:
-        self.task = task
-        self.handler = handler
-
-    @abstractmethod
-    def run (self) -> Dict[..., Any]:
-        """ This functions runs the whole process"""
-        pass
-    
-    @abstractmethod
-    def extract_resuls(self, data:Dict[str, Any], title:str, format_type:str) -> None:
-        """ This function will be a helper function for __init__ and also other classes which extended from this class to extract results in a format they like"""
-        pass
-    def cancel(self) -> None:
-        self._status = Status.CANCELLED
-        print("Process is cancelled")
 class QualityTask:
     def __init__(self, task, status:Status) -> Dict[str, Any]:
         self.task = task
@@ -58,4 +41,20 @@ class QualityTask:
     def status(self) -> None:
         del _status
         print("Deleted status")
+class BaseQualityModel(ABC):
+    def __init__(self, task: QualityTask, handler: Any) -> None:
+        self.task = task
+        self.handler = handler
 
+    @abstractmethod
+    def run (self) -> Dict[..., Any]:
+        """ This functions runs the whole process"""
+        pass
+
+    @abstractmethod
+    def extract_resuls(self, data:Dict[str, Any], title:str, format_type:str) -> None:
+        """ This function will be a helper function for __init__ and also other classes which extended from this class to extract results in a format they like"""
+        pass
+    def cancel(self) -> None:
+        self._status = Status.CANCELLED
+        print("Process is cancelled")
