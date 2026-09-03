@@ -1,8 +1,9 @@
 import os
 import sys
-import numpy as np
+# deprecated may be used later import numpy as np
 import struct
 import time
+import math
 
 current_dir = os.path.dirname(os.path.abspath(__file__))
 
@@ -18,13 +19,14 @@ FREQUENCY = 1.0
 TIME_DURATION = 10.0
 FREQUENCY_SAMPLING = 100
 
+# deprecated may be used later
+"""
 def generate_waves():
     samples = np.linspace(0, TIME_DURATION, int(FREQUENCY_SAMPLING * TIME_DURATION), endpoint = False)
     signal = np.sin(2 * np.pi * FREQUENCY * samples)
 
     return signal
-
-
+"""
 def calculate_crc8(data: bytes) -> int:
     crc = 0x00
     for byte in data:
@@ -61,14 +63,17 @@ def encoder_to_payload(sensor_id:int, status_flags:int, raw_value:int) -> bytes:
 
 
 def run_simulation(sensor_buffer):
-    signal_array = generate_waves()
     delay_seconds = 1.0 / FREQUENCY_SAMPLING
 
     print("Simulation is Running")
+    start_time = time.time()
+    step = 0
 
+    while True:
 
-    for step, raw_value in enumerate(signal_array):
+        current_time = time.time() - start_time
 
+        raw_value = math.sin(2 * math.pi * FREQUENCY * current_time)
         payload = encoder_to_payload(sensor_id=1, status_flags=0, raw_value=raw_value)
 
         for byte_val in payload:
@@ -77,6 +82,7 @@ def run_simulation(sensor_buffer):
         if step % 100 == 0:
             print(f"Step: {step:04d} | Signal: {raw_value:+.2f} | Buffer Load: {sensor_buffer.available()} bytes")
 
+        step+=1
         time.sleep(delay_seconds)
 
 if __name__ == "__main__":
