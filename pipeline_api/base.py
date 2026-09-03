@@ -13,10 +13,10 @@ embedded_systems_path = os.path.abspath(os.path.join(current_dir, "..", "embedde
 if embedded_systems_path not in sys.path:
     sys.path.append(embedded_systems_path)
 import labox_embedded_core
+print(dir(labox_embedded_core))
 
 print("ALL MODULES SUCCESSFULLY IMPORTED")
 
-run_simulation()
 
 
 def decoder_to_consumer(raw_5_bytes:bytes) -> Dict[str, Any]:
@@ -26,11 +26,29 @@ def decoder_to_consumer(raw_5_bytes:bytes) -> Dict[str, Any]:
     raw_value = unpacked_data[2]
     crc_byte = unpacked_data[3]
     return {
-            "sensor_id": sensor_id
-            "status_flags": status_flags
-            "raw_value": raw_value
+            "sensor_id": sensor_id,
+            "status_flags": status_flags,
+            "raw_value": raw_value,
             "crc_byte": crc_byte
     }
+
+async def consumer_loop(sensor_buffer):
+    print("CONSUMER IS STARTED")
+
+    while True:
+        if sensor_buffer.available() >= 5:
+            packet_bytes = bytearray()
+
+            for _ in range(5):
+                byte_val = sensor_buffer.pop()
+                packet_bytes.append(byte_val)
+
+            telemetry_data = decoder_to_consumer(packet_bytes)
+
+            print(f"TELEMETRY IS RECEIVED: {telemetry_data}")
+
+        await asyncio.sleep(0.001)
+
 
 
 class QualityTestPipeline():
@@ -100,3 +118,16 @@ class FirmwareloaderPipeline():
         """ This function will upload firmware to selected devices"""
         pass
 
+
+async def main():
+
+    shared_buffer = labox_embedded_core.ByteRingBuffer(1024)
+
+    await asyncio.gather(
+            asyncio.to_thread(run_simulation, shared_buffer),
+            consumer_loop(shared_buffer)
+
+    )
+
+if __name__ == "__main__":
+    asyncio.run(main())

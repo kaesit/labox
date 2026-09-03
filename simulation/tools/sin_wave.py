@@ -14,9 +14,9 @@ import labox_embedded_core
 
 #print("All libraries and modules imported successfully")
 
-FREQUENCY = 200
-TIME_DURATION = 1.0
-FREQUENCY_SAMPLING = 2000
+FREQUENCY = 1.0
+TIME_DURATION = 10.0
+FREQUENCY_SAMPLING = 100
 
 def generate_waves():
     samples = np.linspace(0, TIME_DURATION, int(FREQUENCY_SAMPLING * TIME_DURATION), endpoint = False)
@@ -60,13 +60,12 @@ def encoder_to_payload(sensor_id:int, status_flags:int, raw_value:int) -> bytes:
 
 
 
-def run_simulation():
+def run_simulation(sensor_buffer):
     signal_array = generate_waves()
     delay_seconds = 1.0 / FREQUENCY_SAMPLING
 
     print("Simulation is Running")
 
-    sensor_buffer = labox_embedded_core.ByteRingBuffer(1024)
 
     for step, raw_value in enumerate(signal_array):
 
@@ -75,10 +74,10 @@ def run_simulation():
         for byte_val in payload:
             sensor_buffer.push(byte_val)
 
-    if step % 100 == 0:
-        print(f"Step: {step:04d} | Signal: {raw_value:+.2f} | Buffer Load: {sensor_buffer.available()} bytes")
+        if step % 100 == 0:
+            print(f"Step: {step:04d} | Signal: {raw_value:+.2f} | Buffer Load: {sensor_buffer.available()} bytes")
 
-    time.sleep(delay_seconds)
+        time.sleep(delay_seconds)
 
 if __name__ == "__main__":
     run_simulation()
